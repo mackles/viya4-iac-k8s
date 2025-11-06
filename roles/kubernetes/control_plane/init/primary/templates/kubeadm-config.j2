@@ -71,6 +71,9 @@ apiVersion: kubeproxy.config.k8s.io/v1alpha1
 kind: KubeProxyConfiguration
 mode: "ipvs"
 ipvs:
+{% if kubernetes_loadbalancer == "kube-vip" %}
+  excludeCIDRs:
+{% endif %}
   strictARP: true
 metricsBindAddress: "0.0.0.0:10249"
 enableProfiling: true
